@@ -33,21 +33,23 @@ func main() {
 
 	fmt.Println("Press ESC to quit")
 
-	ch := make(chan string)
-	go down(ch)
-	go eventHandler(ch)
+	ch1 := make(chan string)
+	ch2 := make(chan string)
+	go down(ch1, ch2)
+	go eventHandler(ch1, ch2)
 	for {
 		_, key, _ := keyboard.GetKey()
 		switch key {
 		case keyboard.KeyArrowRight:
-			ch <- "right"
+			ch1 <- "right"
 		case keyboard.KeyArrowUp:
-			ch <- "up"
+			ch1 <- "up"
 		case keyboard.KeyArrowLeft:
-			ch <- "left"
+			ch1 <- "left"
 		case keyboard.KeyArrowDown:
-			ch <- "down"
+			ch1 <- "down"
 		case keyboard.KeyEsc:
+			ch1 <- "esc"
 			return
 		}
 	}
@@ -55,14 +57,17 @@ func main() {
 	tool.Print(arr)
 }
 
-func eventHandler(ch chan string) {
-	var input = <- ch
-	fmt.Println(input)
-	go eventHandler(ch)
+func eventHandler(ch1 chan string, ch2 chan string) {
+	var input = <- ch1
+	if input == "esc" {
+		return
+	}
+
+	go eventHandler(ch1, ch2)
 }
 
-func down(ch chan string) {
+func down(ch1 chan string, ch2 chan string) {
 	time.Sleep(time.Duration(1) * time.Second)
-	ch <- "down"
-	go down(ch)
+	ch1 <- "down"
+	go down(ch1, ch2)
 }
