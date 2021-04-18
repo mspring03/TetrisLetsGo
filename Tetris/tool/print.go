@@ -18,9 +18,9 @@ func Print(arr [][]int) {
 	println()
 	println()
 	border := color.New(color.BgHiWhite).SprintFunc()
-	for i := 22; i >= 0; i-- {
+	for i := 23; i > 0; i-- {
 		switch i {
-		case 20:
+		case 21:
 			fmt.Printf("      %s", border("  "))
 			for j := 0; j < 10; j++ {
 				if arr[i][j] == 0 {
@@ -32,7 +32,7 @@ func Print(arr [][]int) {
 			fmt.Printf("%s", border("  "))
 			fmt.Println()
 			continue
-		case 0:
+		case 1:
 			fmt.Printf("      %s", border("  "))
 			for j := 0; j < 10; j++ {
 				if arr[i][j] == 0 {
@@ -89,5 +89,8 @@ func colorPrint(a int) {
 		fmt.Printf("%s", Yellow("  "))
 		break
 	case 7:
+		Red := color.New(color.BgRed).SprintFunc()
+		fmt.Printf("%s", Red("  "))
+		break
 	}
 }
