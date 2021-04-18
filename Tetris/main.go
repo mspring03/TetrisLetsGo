@@ -5,7 +5,6 @@ import (
 	"github.com/eiannone/keyboard"
 	"github.com/mspring03/TetrisLetsGo/Tetris/tool"
 	"math/rand"
-	"os"
 	"sync"
 	"time"
 
@@ -48,7 +47,6 @@ func main() {
 		go keyListener(ch1, ch4, wait)
 		fmt.Println(1234)
 		<- ch2
-		fmt.Println(1234)
 
 		ch3 <- true
 		fmt.Println(1234)
@@ -196,7 +194,7 @@ func keyListener(ch1 chan string, ch4 chan bool, wait sync.WaitGroup) {
 			case keyboard.KeyArrowDown:
 				ch1 <- "down"
 			case keyboard.KeyEsc:
-				os.Exit(3)
+
 			}
 		}
 	}
