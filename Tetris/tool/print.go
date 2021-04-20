@@ -13,6 +13,17 @@ import (
 
 //fmt.Printf("This %s rocks!\n", info("package"))
 func Print(arr [][]int) {
+
+	//c := make(chan string)
+	//for {
+	//	select {
+	//	case s := <-c:
+	//		fmt.Println(s)
+	//	default:
+	//		continue
+	//	}
+	//}
+
 	output, _ := exec.Command("clear").CombinedOutput()
 	fmt.Print(string(output))
 	println()
