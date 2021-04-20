@@ -4,9 +4,7 @@ func Shapes(shape int, num int) (arr [][]int) {
 	switch shape {
 	case 1:
 		switch num {
-		case 1:
-		case 2:
-		case 3:
+		case 1, 2, 3:
 		case 4:
 			arr := [][]int {
 				{0, 0}, {0, -1}, {-1, 0}, {-1, -1},
